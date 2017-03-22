@@ -1,0 +1,13 @@
+{
+    "name": "flo/todo-demo-spread",
+    "description": "Prototype of a todo list in PHP using twig",
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Florian Labarre",
+            "email": "florianlabarre1995@gmail.com"
+        }
+    ]
+}
