@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS todolist;
+
+CREATE TABLE IF NOT EXISTS todolist.items
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  title VARCHAR(64) NOT NULL,
+  body VARCHAR(255)
+);
+CREATE UNIQUE INDEX items_id_uindex ON todolist.items (id);
