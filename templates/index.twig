@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODOList</title>
+    <link rel="stylesheet" href="css/material.min.css">
+    <script src="js/material.min.js"></script>
+    <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">TODO List</span>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <form action="engine.php" method="POST">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="item-title" name="item-title">
+                    <label class="mdl-textfield__label" for="item-title">Add stuff to do...</label>
+                </div>
+                <br>
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Add">
+            </form>
+            <br>
+            <table class="mdl-data-table mdl-js-data-table">
+                {#<thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Name</th>
+                    <th class="mdl-data-table__cell--non-numeric">Nickname</th>
+                    <th>Age</th>
+                    <th class="mdl-data-table__cell--non-numeric">Living?</th>
+                </tr>
+                </thead>#}
+                <tbody>
+                {% for item in items %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">{{ item.title }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<?//= prnsj($lml) ?>
+</body>
+</html>
