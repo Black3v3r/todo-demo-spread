@@ -27,22 +27,21 @@
                     <label class="mdl-textfield__label" for="item-title">Add stuff to do...</label>
                 </div>
                 <br>
-                <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Add">
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" value="Add">
             </form>
             <br>
-            <table class="mdl-data-table mdl-js-data-table">
-                {#<thead>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Name</th>
-                    <th class="mdl-data-table__cell--non-numeric">Nickname</th>
-                    <th>Age</th>
-                    <th class="mdl-data-table__cell--non-numeric">Living?</th>
+                    <th class="mdl-data-table__cell--non-numeric">Title</th>
+                    <th class="mdl-data-table__cell--non-numeric">Delete</th>
                 </tr>
-                </thead>#}
+                </thead>
                 <tbody>
                 {% for item in items %}
                 <tr>
                     <td class="mdl-data-table__cell--non-numeric">{{ item.title }}</td>
+                    <td class="mdl-data-table__cell--non-numeric"><button  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button></td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -50,6 +49,5 @@
         </div>
     </main>
 </div>
-<?//= prnsj($lml) ?>
 </body>
 </html>
