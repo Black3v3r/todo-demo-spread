@@ -144,3 +144,4 @@ $RECYCLE.BIN/
 *.lnk
 
 /db_config.inc.php
+!/fill_db.sql
