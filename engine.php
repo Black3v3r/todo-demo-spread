@@ -5,6 +5,7 @@ require_once 'error_handling.php';
 require_once 'db_config.inc.php';
 require_once 'Database.php';
 
+/* Database instantiation */
 $db = new Database($dbConfig);
 
 /* Item insertion */
@@ -45,9 +46,6 @@ elseif (isset($_GET['action']) && ($_GET['action'] == 'delete')) {
         }
     }
 
-elseif (isset($_GET['action']) && ($_GET['action'] == 'delete'))
-{
-    var_dump($_POST);
 }
 
-//header('Location: ./');header('Location: ./');
+header('Location: ./');

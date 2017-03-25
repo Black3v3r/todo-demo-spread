@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Class Database Database requests management
+ */
 class Database
 {
+    /**
+     * @var string Database configuration
+     */
     private $config;
 
     /**
@@ -18,6 +24,10 @@ class Database
         $this->config = $config;
     }
 
+    /**
+     * Database connection
+     * @return $this instance of Database
+     */
     public function connect()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -32,6 +42,7 @@ class Database
     }
 
     /**
+     * Inserts item into a table
      * @param $table
      * @param $fields
      */
@@ -53,7 +64,12 @@ class Database
         $query->execute($fields);
     }
 
-    public function get($table)
+    /**
+     * Gets all elements in a table
+     * @param $table
+     * @return array Fetched elements
+     */
+    public function getAll($table)
     {
         $this->connect();
         $stmt = 'SELECT * FROM ' . $this->config['dbname'] . '.' . $table;
@@ -61,6 +77,12 @@ class Database
         $query->execute();
         return $query->fetchAll();
     }
+
+    /**
+     * Deletes an element in a table with his id
+     * @param $table
+     * @param $id
+     */
     public function deleteById($table, $id)
     {
         $this->connect();

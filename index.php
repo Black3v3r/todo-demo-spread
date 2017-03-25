@@ -4,7 +4,7 @@ require_once 'error_handling.php';
 
 require_once 'vendor/autoload.php';
 
-$dbConfig = array();
+$dbConfig = [];
 require_once 'db_config.inc.php';
 
 require_once 'Database.php';
@@ -18,6 +18,6 @@ $twigEnv = new Twig_Environment($twigLoader, [
 
 $db = new Database($dbConfig);
 
-$items = $db->get('items');
+$items = $db->getAll('items');
 
 echo $twigEnv->render('index.twig', ['items' => $items]);
