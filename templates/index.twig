@@ -37,7 +37,8 @@
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-item-all">
-                                <input type="checkbox" id="checkbox-item-all" name=checkbox-item-all" class="mdl-checkbox__input">
+                                <input type="checkbox" id="checkbox-item-all" name="checkbox-item-all"
+                                       class="mdl-checkbox__input">
                             </label>
                         </th>
                         <th class="mdl-data-table__cell--non-numeric">Title</th>
@@ -48,13 +49,18 @@
                     {% for item in items %}
                         <tr>
                             <td class="mdl-data-table__cell--non-numeric">
-                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-item-{{ item.id }}">
-                                    <input type="checkbox" id="checkbox-item-{{ item.id }}" name=checkbox-item-{{ item.id }}" class="mdl-checkbox__input">
+                                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                       for="checkbox-item-{{ item.id }}">
+                                    <input type="checkbox" id="checkbox-item-{{ item.id }}"
+                                           name="checkbox-item-{{ item.id }}" class="mdl-checkbox__input checkbox-item">
                                 </label>
                             </td>
                             <td class="mdl-data-table__cell--non-numeric">{{ item.title | raw }}</td>
                             <td class="mdl-data-table__cell--non-numeric">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                <button
+                                        class="mdl-button mdl-js-button mdl-button--raised
+                                                mdl-js-ripple-effect mdl-button--accent"
+                                        name="button-delete-item-{{ item.id }}" value="Delete">
                                     Delete
                                 </button>
                             </td>
@@ -71,5 +77,22 @@
         </div>
     </main>
 </div>
+<script type="application/javascript">
+    /* Checks and unchecks elements according to the state of the checkbox in the header */
+    document.getElementById('checkbox-item-all').addEventListener('change', function () {
+        var that = this;
+        /* Selecting all checkboxes */
+        Array.from(document.getElementsByClassName('checkbox-item')).forEach(function (element) {
+            /* changing state */
+            element.checked = that.checked;
+            /* changing state in the UI (necessary with Material Design Lite) */
+            if (that.checked) {
+                document.querySelector('label[for="' + element.id + '"]').classList.add('is-checked');
+            } else {
+                document.querySelector('label[for="' + element.id + '"]').classList.remove('is-checked');
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -20,7 +20,9 @@ class Database
 
     public function connect()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($this->pdo)) {
             $this->pdo = new PDO('mysql:dbname=' . $this->config['dbname'] . ';host=' . $this->config['host'], $this->config['username'], $this->config['password']);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -58,5 +60,25 @@ class Database
         $query = $this->pdo->prepare($stmt);
         $query->execute();
         return $query->fetchAll();
+    }
+    public function deleteById($table, $id)
+    {
+        $this->connect();
+        $stmt = 'DELETE FROM ' . $this->config['dbname'] . '.' . $table . ' WHERE id = :id';
+        $query = $this->pdo->prepare($stmt);
+        $query->execute(['id' => $id]);
+    }
+
+    /**
+     * Deletes all elements in a table
+     * @param $table
+     */
+    public function deleteAll($table)
+    {
+        $this->connect();
+        $stmt = 'DELETE FROM ' . $this->config['dbname'] . '.' . $table;
+        $query = $this->pdo->prepare($stmt);
+        var_dump($query);
+        $query->execute();
     }
 }
